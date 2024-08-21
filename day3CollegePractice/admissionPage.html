@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admission Page</title>
+    <style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-image: url("bg.png");
+        background-size: cover; 
+        background-position: center;
+        background-repeat: no-repeat; 
+        background-attachment: fixed;
+    }
+
+    .container {
+        display: flex;
+        justify-content: space-between;
+        padding: 20px;
+    }
+
+    .banner {
+        position: relative;
+        width: 60%;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional shadow for better visibility */
+    }
+
+    .banner-content {
+        margin-left: 50px;
+        margin-top: 50px;
+    }
+
+    .banner-content h1 {
+        font-size: 68px;
+        color: #0f03f8;
+        margin: 0;
+    }
+
+    .banner-content h2 {
+        font-size: 46px;
+        color: #041f35;
+        margin: 10px 0;
+    }
+
+    .banner-content p {
+        font-size: 28px;
+        color: #f10629;
+        line-height: 1.8;
+        
+    }
+
+    .logo {
+        position: absolute;
+        top: 20px;
+        right: 40px;
+        width: 120px;
+        border-radius: 20px;
+    }
+
+    .form-container {
+        width: 35%;
+        background-color: #ccc;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 20px;
+    }
+
+    .form-container h2 {
+        font-size: 24px;
+        color: #ff0037;
+        text-align: center;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    form input, form select {
+        margin: 10px 0;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    .terms {
+        display: flex;
+        align-items: center;
+        margin: 15px 0;
+    }
+
+    .terms input {
+        margin-right: 10px;
+    }
+
+    .terms label {
+        font-size: 14px;
+    }
+
+    button {
+        padding: 15px;
+        font-size: 16px;
+        color: #ffffff;
+        background-color: #ff6600;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #e55b00;
+    }
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="banner">
+            <div class="banner-content">
+                <h1>"I AM THE NEXT"</h1>
+                <h2>Industry Leader</h2>
+                <p><b>Business & Management | Computing & Analytics | Media | Design | Engineering | Health Science | Hotel & Tourism Management | Nursing</b></p>
+            </div>
+            <img src="nshmLogoo.png" alt="NSHM Logo" class="logo">
+        </div>
+
+        <div class="form-container">
+            <h2>Admission Open 2024 - 25</h2>
+            <form id="admissionForm">
+                <input type="text" id="firstName" placeholder="First Name" required>
+                <input type="text" id="middleName" placeholder="Middle Name">
+                <input type="text" id="lastName" placeholder="Last Name" required>
+                <input type="tel" id="phoneNumber" placeholder="+91 Enter Mobile Number" required>
+                <input type="email" id="email" placeholder="Enter Email Id" required>
+
+                <select id="country" required>
+                    <option value="country">Country</option>
+                    <option value="India">India</option>
+                    <option value="Pakisthan">Pakisthan</option>
+                    <option value="Japan">Japan</option>
+                    <option value="USA">USA</option>
+                    <option value="others">Others</option>
+                </select>
+
+                <select id="state" required>
+                    <option value="">Select State</option>
+                    <option value="West Bengal">West Bengal</option>
+                    <option value="Delhi">Delhi</option>
+                    <option value="Asam">Asam</option>
+                    <option value="Bihar">Bihar</option>
+                </select>
+
+                <select id="city" required>
+                    <option value="">City</option>
+                    <option value="Kolkata">Kolkata</option>
+                    <option value="Purba Medinipur">Purba Medinipur</option>
+                </select>
+
+                <select id="campus" required>
+                    <option value="">Select Campus</option>
+                    <option value="Kolkata">Kolkata </option>
+                    <option value="Durgapur">Durgapur</option>
+                </select>
+
+                <select id="program" required>
+                    <option value="">Select Program</option>
+                    <option value="kolkata(UG)">Kolkata(UG)</option>
+                    <option value="Durgapur(UG)">Durgapur(UG)</option>
+                    
+                </select>
+
+                <select id="course" required>
+                    <option value="#">Select Course</option>
+                    <option value="BCA">BCA</option>
+                    <option value="BBA">BBA</option>
+                    <option value="BTECH">BTECH</option>
+                    <option value="MBA">MBA</option>
+                </select>
+
+                <div class="terms">
+                    <input type="checkbox" required>
+                    <label>I agree to all T&Cs and also to receive communication via WhatsApp, SMS, and Email *</label>
+                </div>
+
+                <button type="submit">Register</button>
+            </form>
+        </div>
+    </div>
+    <script>
+        document.getElementById('admissionForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const admissionData = {
+                firstName: document.getElementById('firstName').value,
+                middleName: document.getElementById('middleName').value,
+                lastName: document.getElementById('lastName').value,
+                phoneNumber: document.getElementById('phoneNumber').value,
+                email: document.getElementById('email').value,
+                country: document.getElementById('country').value,
+                state: document.getElementById('state').value,
+                city: document.getElementById('city').value,
+                campus: document.getElementById('campus').value,
+                program: document.getElementById('program').value,
+                course: document.getElementById('course').value
+            };
+
+            localStorage.setItem('admissionData', JSON.stringify(admissionData));
+            window.location.href = 'payment.html';
+        });
+    </script>
+</body>
+</html>

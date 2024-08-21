@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admit Card</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: rgb(225,227,175);
+            background: linear-gradient(90deg, rgba(225,227,175,1) 34%, rgba(198,236,220,1) 71%);
+            padding: 20px;
+            text-align: center;
+        }
+
+        .admit-card {
+            background: rgb(238,174,202);
+            background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+            padding: 20px;
+            border-radius: 10px;
+            width: 500px;
+            margin: 0 auto;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #0041b5;
+        }
+
+        p {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #ff6600;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="admit-card" id="admitCard">
+        <h2>NSHM College of Management and Technology</h2>
+        <p><strong>Name:</strong> <span id="name"></span></p>
+        <p><strong>Email:</strong> <span id="email"></span></p>
+        <p><strong>Phone Number:</strong> <span id="phone"></span></p>
+        <p><strong>City:</strong> <span id="city"></span></p>
+        <p><strong>Program:</strong> <span id="program"></span></p>
+        <p><strong>Course:</strong> <span id="course"></span></p>
+        <p><strong>Campus:</strong> <span id="campus"></span></p>
+        <button onclick="generatePDF()">Download Admit Card</button>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script>
+        // Retrieve data from local storage
+        const admissionData = JSON.parse(localStorage.getItem('admissionData'));
+
+        // Populate the HTML with the retrieved data
+        document.getElementById('name').textContent = `${admissionData.firstName} ${admissionData.middleName} ${admissionData.lastName}`;
+        document.getElementById('email').textContent = admissionData.email;
+        document.getElementById('phone').textContent = admissionData.phoneNumber;
+        document.getElementById('city').textContent = admissionData.city;
+        document.getElementById('program').textContent = admissionData.program;
+        document.getElementById('course').textContent = admissionData.course;
+        document.getElementById('campus').textContent = admissionData.campus;
+
+        // Function to generate and download the PDF
+        function generatePDF() {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+
+            doc.text("NSHM College of Management and Technology", 20, 20);
+            doc.text(`Name: ${admissionData.firstName} ${admissionData.middleName} ${admissionData.lastName}`, 20, 40);
+            doc.text(`Email: ${admissionData.email}`, 20, 60);
+            doc.text(`Phone Number: ${admissionData.phoneNumber}`, 20, 80);
+            doc.text(`City: ${admissionData.city}`, 20, 100);
+            doc.text(`Program: ${admissionData.program}`, 20, 120);
+            doc.text(`Course: ${admissionData.course}`, 20, 140);
+            doc.text(`Campus: ${admissionData.campus}`, 20, 160);
+
+            doc.save('AdmitCard.pdf');
+        }
+    </script>
+</body>
+</html>

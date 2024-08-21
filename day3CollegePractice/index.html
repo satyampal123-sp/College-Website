@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Campuses</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            padding: 0;
+            background-color: #f4e6cf;
+        }
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #333;
+        }
+
+        li {
+            float: left;
+        }
+
+        li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        li a:hover:not(.active) {
+            background-color: #111;
+        }
+
+        .active {
+            background-color: #04AA6D;
+        }
+
+        .nav-links {
+            width: 100%;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            background-color: rgb(233, 233, 243);
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #ffffff;
+            font-size: 1rem;
+            font-weight: 500;
+            text-align: center;
+        }
+        
+        h1 {
+            color: #5908bb;
+            text-align: center;
+            font-size: 35px;
+        }
+
+        p {
+            color: #0c0909;
+        }
+
+        .campus-info {
+            margin-bottom: 20px;
+        }
+
+        .campus-info img {
+            max-width: 50%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 50px;
+            margin: 10px;
+            padding: 15px;
+        }
+
+        .logo {
+            width: 120px;
+        }
+
+        header {
+            text-align: center;
+            padding: 20px;
+            background-image: url("nshmbackpage.png");
+            background-repeat: no-repeat;
+            background-position: center;
+            height: 300px;
+            background-size: cover;
+            position: relative;
+            color: white;
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+
+        header * {
+            position: relative; 
+            z-index: 2;
+        }
+    
+        .programs-section {
+            text-align: center;
+            margin: 40px 0;
+            padding: 20px;
+            background-color: #e0dfdf;
+        }
+
+        .programs-section h2 {
+            color: #081abb;
+            font-size: 25px;
+            margin-bottom: 10px;
+        }
+        .program-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center; /* Centers the items */
+            gap: 30px;
+        }   
+        .program-row {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .program-box {
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            text-align: center;
+            flex: 0 1 calc(25% - 20px); /* Ensures a max width of 25% with some margin */
+            box-sizing: border-box;
+            margin: 10px; /* Adds some space around each program-box */
+        }
+
+        .program-box h3 {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .program-box img {
+            width: 60px;
+            height: auto;
+            margin-bottom: 10px;
+        }
+
+        .program-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Individual program colors */
+        .business-school {
+            background-color: #ed903e;
+        }
+
+        .computing-analysis {
+            background-color: #3d9cfb;
+        }
+
+        .design-school {
+            background-color: #fe745c;
+        }
+
+        .engineering-tech {
+            background-color: #57f157;
+        }
+
+        .health-science {
+            background-color: #ec93a0;
+        }
+
+        .hotel-management {
+            background-color: #ad89f4;
+        }
+
+        .media {
+            background-color: #d57602;
+        }
+
+        .nursing {
+            background-color: #ff4500;
+        }
+
+        .button {
+            background-color: #ff6f61;
+            color: white;
+            padding: 15px 30px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            margin: 10px;
+            cursor: pointer;
+            border-radius: 30px;
+            border: none;
+            font-size: 18px;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        .button:hover {
+            background-color: #e55d50;
+            transform: translateY(-2px);
+        }
+        /* Placements Section Styles */
+        .placements-section {
+            text-align: center;
+            padding: 50px;
+            background-color: #f4f4f4;
+        }
+
+        .placements-section h2 {
+            font-size: 2.5em;
+            margin-bottom: 50px;
+        }
+
+        .placement-container {
+            display: flex;
+            justify-content: space-evenly;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .placement-box {
+            text-align: center;
+            flex: 1; /* Ensures the boxes take equal space */
+            position: relative;
+        }
+
+        .placement-box:not(:last-child)::after {
+            content: "";
+            width: 2px;
+            height: 150px;
+            background-color: #ccc;
+            position: absolute;
+            right: -25px; /* Positioning the line in the middle of the gap */
+            top: 0;
+            bottom: 0;
+            margin: auto;
+        }
+
+        .circle {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            font-size: 2.5em;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .circle span {
+            display: block;
+        }
+
+        .orange {
+            background-color: #ff6a00;
+        }
+
+        .blue {
+            background-color: #0073e6;
+        }
+
+        .purple {
+            background-color: #8a2be2;
+        }
+
+        .placement-box p {
+            font-size: 1.2em;
+            margin: 0;
+        }
+
+        footer {
+            background-color: rgb(206, 225, 230);
+            color: white;
+            text-align: center;
+            padding: none;
+            position: fixed;
+            bottom: 0;
+            min-width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="nshmLogoo.png" alt="nshm logo" class="logo">
+        <h1 style="font-size: 40px; color: #fefbfb;">NSHM Knowledge Campus</h1><br>
+    </header>
+    <ul class="nav-links">
+        <li><a href="http://127.0.0.1:5500/day3CollegePractice/index.html#">HOME</a></li>
+        <li><a href="http://127.0.0.1:5500/day3CollegePractice/admissionPage.html" >ADMISSIONS</a></li>
+        <li><a href="http://127.0.0.1:5500/day3CollegePractice/Event.html">NEWS & EVENTS</a></li>
+        <li><a href="http://127.0.0.1:5500/day3CollegePractice/contactUS.html">CONTACT US</a></li>
+        <li><a href="http://127.0.0.1:5500/day3CollegePractice/payment.html">PAYMENT</a></li>
+        <li><a href="#">COURSE</a></li>
+        <li><a href="#">ABOUT US</a></li>
+    </ul>
+
+    <div class="campus-info">
+        <h1>Kolkata Campus & Durgapur Campus</h1>
+        <p>
+            With 2 sprawling state-of-the-art campuses in Kolkata and Durgapur, we ensure that our students have access to the best of educational facilities that are at par with international standards. Both campuses are replete with new age classrooms, recreational zones, modern student laboratories with the latest equipment and practicing tools, and an environment that fosters a vibrant culture that is conducive to bringing out the best in our students.
+        </p>
+        <img src="N.webp" alt="Kolkata Campus">
+        <img src="D.webp" alt="Durgapur Campus">
+    </div> 
+    <div class="programs-section">
+        <h1>Our Programs</h1>
+        <div class="programs-container">
+            <div class="program-row">
+                <div class="program-box business-school">
+                    <img src="businessschool.jpg" alt="Business School Logo">
+                    <h3>Business School</h3>
+                </div>
+                <div class="program-box computing-analysis">
+                    <img src="computing_logo.png" alt="Computing Analysis Logo">
+                    <h3>Computing & Data Analytics</h3>
+                </div>
+                <div class="program-box design-school">
+                    <img src="design_logo.jpg" alt="Design School Logo">
+                    <h3>Design School</h3>
+                </div>
+                <div class="program-box engineering-tech">
+                    <img src="engineering_logo.png" alt="Engineering & Technology Logo">
+                    <h3>Engineering & Technology</h3>
+                </div>
+            </div>
+            <div class="program-row">
+                <div class="program-box health-science">
+                    <img src="health_logo.jpg" alt="Health Science Logo">
+                    <h3>Health Science</h3>
+                </div>
+                <div class="program-box hotel-management">
+                    <img src="hotel_logo.jpg" alt="Hotel Management Logo">
+                    <h3>Hotel Management</h3>
+                </div>
+                <div class="program-box media">
+                    <img src="media_logo.png" alt="Media Logo">
+                    <h3>Media & Communication</h3>
+                </div>
+                <div class="program-box nursing">
+                    <img src="nursing_logo.png" alt="Nursing Logo">
+                    <h3>Nursing</h3>
+                </div>
+            </div>
+            <a href="https://www.nshm.com/academics/programmes/" class="button">View all programs</a>
+        </div>
+    </div>
+    <div class="placements-section">
+        <h2>Our Placements</h2>
+        <div class="placement-container">
+            <div class="placement-box">
+                <div class="circle orange"><span>96%</span></div>
+                <p>PLACEMENT SUCCESS RATE</p>
+            </div>
+            <div class="placement-box">
+                <div class="circle blue"><span>600+</span></div>
+                <p>RECRUITERS ON CAMPUS</p>
+            </div>
+            <div class="placement-box">
+                <div class="circle purple"><span>12000+</span></div>
+                <p>ALUMNI NETWORK</p>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p style="color: #3e0707; font-size: 15px;">&copy; 2024 NSHM Knowledge Campus. All rights reserved.</p>
+    </footer>
+</body>
+</html>
